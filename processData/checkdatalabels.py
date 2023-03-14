@@ -7,7 +7,7 @@
 @Time: 2022/10/21 15:36
 @ReadMe: 如果完成了Train data的数据标注，在这里检测标注的标签是否有错误信息
 """
-# 除了标签过少暂时不处理的11个标签：带上 o；一共48个在处理的标签；如果不带o；一共【47】个标签 * BIES = 188个标签；
+# # version = 1.0.0 除了标签过少暂时不处理的11个标签：带上 o；一共48个在处理的标签；如果不带o；一共【47】个标签 * BIES = 188个标签；
 # todo bigfiles\nerCodeBaseLineOutput\giikin_alltageddata_new\roberta_wwm_crf\checkpoint-1236 使用的标签体系
 standard_tags = ['prt品类', 'tim日常时间', 'tim春夏时节', 'tim秋冬时节', 'hod节日', 'sce装修制造', 'sce预防保护', 'sce购物送礼', 'sce乐业', 'sce交通出行', 'sce维修检测', 'sce保洁洗漱',
                  'sce整理搬运', 'sce御寒保暖', 'sce吃美食', 'sce户外娱乐', 'sce身体保健', 'sce运动健身', 'sce化妆美容', 'the胶皮革绒', 'the金银铜铁', 'the麻线丝棉', 'the植物原料',
@@ -15,7 +15,7 @@ standard_tags = ['prt品类', 'tim日常时间', 'tim春夏时节', 'tim秋冬�
                  'cro家具设备', 'cro生命元素', 'cro有害元素', 'cro身体部位', 'mar口味', 'mar颜色', 'mar图案', 'mar高效便捷', 'mar舒适触感', 'mar风格', 'mar款式', 'mar人文宗教', 'o']
 print(len(standard_tags))
 
-# todo 20230309 新的标签不带 o 一共 59个；
+# todo 20230309 新的标签不带 o 一共 59个；# version = 2.0.1
 standard_tags = ['cro家具设备', 'sce睡觉休息', 'sce整理搬运', 'mar舒适触感', 'cro办公学习', 'sce运动健身', 'mar图案', 'sce身体保健', 'sce乐业', 'cro弱势群体', 'sce工作学习',
                  'cro娱乐场所', 'cro肥胖群体', 'the高新技术', 'cro有害元素', 'mar款式', 'sce交通出行', 'sce吃美食', 'cro懒人群体', 'sce预防保护', 'sce购物送礼', 'sce保洁洗漱',
                  'cro美容产品', 'mar性状', 'prt商品', 'mar高效便捷', 'tim秋冬时节', 'sce装修制造', 'tim日常时间', 'hod节日', 'cro男性群体', 'cro浴室', 'cro生命元素',
