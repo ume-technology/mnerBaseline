@@ -52,10 +52,11 @@ def processGiikinGoodsData():
     for k, v in line_name_lang.items():  # line lang
         if v == 'zh':
             continue
-        if '日本' in k:
-            continue
-        if k in ['匈牙利', '卡塔尔', '新加坡', '沙特阿拉伯', '波兰', '泰国', '科威特', '罗马尼亚', '菲律宾', '阿曼苏丹国', '阿联酋', '韩国']:
-            continue
+        # wait 这里日本的线路不是日本名，需要着重处理
+        # if '日本' in k:
+        #     continue
+        # if k in ['匈牙利', '卡塔尔', '新加坡', '沙特阿拉伯', '波兰', '泰国', '科威特', '罗马尼亚', '菲律宾', '阿曼苏丹国', '阿联酋', '韩国']:
+        #     continue
 
         goods_path = os.path.join(base_path, k)
         with open(goods_path, 'rb') as f:  # 这里已经是具体的线路数据： good_data_in_tar_line
@@ -65,27 +66,30 @@ def processGiikinGoodsData():
         # columns = goodsdata.columns
         goodsdata = goodsdata.drop(
             columns=['近15天广告成本', '广告成本', '单次展示成本', '单次点击成本', '单次加购成本', '单次支付成本', '千次展示成本',
-                     'people_cover_cnt', 'campaign_id', 'ad_group_id', 'impressions_cnt', 'clicks_cnt', 'add_cart_cnt', 'checkout_cnt', 'order_cnt', 'conversions_rate']
+                     'people_cover_cnt', 'campaign_id', 'ad_group_id', 'impressions_cnt', 'clicks_cnt', 'add_cart_cnt', 'checkout_cnt',
+                     'order_cnt', 'conversions_rate']
         )
 
-        # todo
-        plat_names = goodsdata.groupby(goodsdata.platfrom).groups
-        plats = [i for i in plat_names]
-        line_dir = '../../bigfiles/newCorrectGiikinGoodsDataSave/cleanOriginalAdsData'
-        target_line_platform_path = os.path.join(line_dir, k)
-        if not os.path.exists(target_line_platform_path):
-            os.makedirs(target_line_platform_path)
-        for each_plat in plats:
-            file_name = each_plat + '.pick'
-            file_path = os.path.join(target_line_platform_path, file_name)
-            goods_with_plat_base_line = goodsdata.loc[goodsdata['platfrom'] == each_plat]
-            goods_with_plat_base_line.loc[:, 'cleantext'] = \
-                goods_with_plat_base_line.apply(cleantext, axis=1, line_name=k, from_=v)
-            # goods_with_plat_base_line.loc[:, 'goodsfeatures'] = goods_with_plat_base_line.apply(mypredict, axis=1)
-            with open(file_path, 'wb') as f:
-                pickle.dump(goods_with_plat_base_line, f)
-            print('---' * 50)
+        # todo 线路数据分平台存储
+        # plat_names = goodsdata.groupby(goodsdata.platfrom).groups
+        # plats = [i for i in plat_names]
+        # line_dir = '../../bigfiles/newCorrectGiikinGoodsDataSave/cleanOriginalAdsData'
+        # target_line_platform_path = os.path.join(line_dir, k)
+        # if not os.path.exists(target_line_platform_path):
+        #     os.makedirs(target_line_platform_path)
+        # for each_plat in plats:
+        #     file_name = each_plat + '.pick'
+        #     file_path = os.path.join(target_line_platform_path, file_name)
+        #     goods_with_plat_base_line = goodsdata.loc[goodsdata['platfrom'] == each_plat]
+        #     goods_with_plat_base_line.loc[:, 'cleantext'] = \
+        #         goods_with_plat_base_line.apply(cleantext, axis=1, line_name=k, from_=v)
+        #     # goods_with_plat_base_line.loc[:, 'goodsfeatures'] = goods_with_plat_base_line.apply(mypredict, axis=1)
+        #     with open(file_path, 'wb') as f:
+        #         pickle.dump(goods_with_plat_base_line, f)
+        #     print('---' * 50)
 
+
+# todo start concat Data =================================================================================================
 
 # todo pass giikin goods demo
 # with open('../../bigfiles/newCorrectGiikinGoodsDataSave/cleanOriginalAdsData/匈牙利/facebook.pick', 'rb') as f:
@@ -100,10 +104,8 @@ cleanAliGoodsData = cleanAliGoodsData.rename(columns={'product_name': 'ali_produ
 
 
 def sampleGiikinGoodsDataWithAiData():
-    """
-    todo 拼接Giikin和1688的数据信息; 并存储在 bigfiles\newConcatAliWithgiikinGoodsData 中
-    wait 目前这里只有如下的几个主要线路的数据
-    """
+    """ todo 拼接Giikin和1688的数据信息; 并存储在 bigfiles\newConcatAliWithgiikinGoodsData 中
+        wait 目前这里只有如下的几个主要线路的数据 """
     # ===========================================
     # todo 拼接 giikin-日本 with ali goods information
     with open('../../bigfiles/newCorrectGiikinGoodsDataSave/日本0-2000000', 'rb') as f:

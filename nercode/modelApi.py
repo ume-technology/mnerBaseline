@@ -22,24 +22,11 @@ import flask
 from flask import Flask
 from flask import Flask, jsonify, request
 
-# linux
-# import pickle
-# import os
-# import json
-# import torch
-# import math
-# from collections import defaultdict
-# from transformers import BertTokenizer
-# from .src.model_utils import CRFModel, SpanModel, EnsembleCRFModel, EnsembleSpanModel
-# from .src.evaluator import crf_decode, span_decode
-# from .src.functions_utils import load_model_and_parallel, ensemble_vote
-# from .src.processor import cut_sent, fine_grade_tokenize
-
 app = Flask(__name__)
 
 MID_DATA_DIR = "../processData/tagdata2ner_new/mid_data_new"
 RAW_DATA_DIR = "../processData/tagdata2ner_new/raw_data_new"
-SUBMIT_DIR = "./result"
+# SUBMIT_DIR = "./result"
 GPU_IDS = "-1"
 LAMBDA = 0.3
 THRESHOLD = 0.9
@@ -55,6 +42,7 @@ BERT_DIR = '/home/fzm/premodelfiles/hflchinese-roberta-wwm-ext'  # todo change l
 #     r'E:\g-core-mytcner\bigfiles\nerCodeBaseLineOutput\giikin_alltageddata_new\roberta_wwm_crf\checkpoint-1236\model.pt'
 # todo change linux
 CKPT_PATH = '/home/fzm/g-core-mytcner/bigfiles/nerCodeBaseLineOutput/giikin_alltageddata_new/roberta_wwm_crf/checkpoint-1236/model.pt'
+CKPT_PATH = '/home/fzm/g-core-mytcner/bigfiles/nerCodeBaseLineOutput/giikin_allatgeddata_20230301/roberta_wwm_crf/checkpoint-1236/model.pt'
 
 with open(os.path.join(MID_DATA_DIR, f'{TASK_TYPE}_ent2id.json'), encoding='utf-8') as f:
     ent2id = json.load(f)

@@ -1,7 +1,5 @@
 ### 这是准备数据的第二部分：读取的是Giikin的商品信息的过程；
-```python
 
-```
 - readalldata_new.py 读取的是 giikin_aliyun.tb_rp_mar_ad_material_df 表的数据作为商品数据；这个表的数据更正确且更加全面；
 - 这部分的数据按照线路存储在bigfiles/newCorrectGiikinGoodsDaraSave目录下；
 - 同时这些线路上的商品的源文件数据保存在云盘：newCorrectGiikinGoodsDataSave(是读取的线路上的广告语的原始数据集)

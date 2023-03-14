@@ -60,6 +60,7 @@ def cleantext(i, line_name, from_):
                 # return  # todo change 这里为了测试程序注释掉；正式上线的时候，这里应该放开，因为这里意味着商品的素材数据是不完整的，不需要再继续执行这条商品数据；
         else:
             pass
+
     # sale_name = '我爱北京天安门'
     sale_name = convert(sale_name, 'zh-cn')
     sale_name = re.sub(utl_pat_1, '', sale_name)
