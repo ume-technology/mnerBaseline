@@ -27,7 +27,7 @@ app = Flask(__name__)
 MID_DATA_DIR = "../processData/tagdata2ner_new/mid_data_new"
 RAW_DATA_DIR = "../processData/tagdata2ner_new/raw_data_new"
 # SUBMIT_DIR = "./result"
-GPU_IDS = "-1"
+GPU_IDS = "-1"  # linux 节约显存，故Linux该服务使用GPU
 LAMBDA = 0.3
 THRESHOLD = 0.9
 MAX_SEQ_LEN = 512
@@ -37,11 +37,11 @@ VOTE = False
 # BERT_DIR = r'F:\PreModels\hflchinese-roberta-wwm-ext'  # todo change windows
 BERT_DIR = '/home/fzm/premodelfiles/hflchinese-roberta-wwm-ext'  # todo change linux
 
-# todo change windows
-# CKPT_PATH = \
-#     r'E:\g-core-mytcner\bigfiles\nerCodeBaseLineOutput\giikin_alltageddata_new\roberta_wwm_crf\checkpoint-1236\model.pt'
-# todo change linux
+# todo # todo change linux  # version = 1.0.0 change windows
+CKPT_PATH = r'E:\g-core-mytcner\bigfiles\nerCodeBaseLineOutput\giikin_alltageddata_new\roberta_wwm_crf\checkpoint-1236\model.pt'
 CKPT_PATH = '/home/fzm/mnerBaseline/bigfiles/nerCodeBaseLineOutput/giikin_alltageddata_new/roberta_wwm_crf/checkpoint-1236/model.pt'
+# todo version = 2.0.0
+CKPT_PATH = ""  # windows
 CKPT_PATH = '/home/fzm/mnerBaseline/bigfiles/nerCodeBaseLineOutput/giikin_allatgeddata_20230301/roberta_wwm_crf/checkpoint-4598/model.pt'
 
 with open(os.path.join(MID_DATA_DIR, f'{TASK_TYPE}_ent2id.json'), encoding='utf-8') as f:
