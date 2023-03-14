@@ -42,7 +42,7 @@ BERT_DIR = '/home/fzm/premodelfiles/hflchinese-roberta-wwm-ext'  # todo change l
 #     r'E:\g-core-mytcner\bigfiles\nerCodeBaseLineOutput\giikin_alltageddata_new\roberta_wwm_crf\checkpoint-1236\model.pt'
 # todo change linux
 CKPT_PATH = '/home/fzm/mnerBaseline/bigfiles/nerCodeBaseLineOutput/giikin_alltageddata_new/roberta_wwm_crf/checkpoint-1236/model.pt'
-CKPT_PATH = '/home/fzm/mnerBaseline/bigfiles/nerCodeBaseLineOutput/giikin_allatgeddata_20230301/roberta_wwm_crf/checkpoint-1236/model.pt'
+CKPT_PATH = '/home/fzm/mnerBaseline/bigfiles/nerCodeBaseLineOutput/giikin_allatgeddata_20230301/roberta_wwm_crf/checkpoint-4598/model.pt'
 
 with open(os.path.join(MID_DATA_DIR, f'{TASK_TYPE}_ent2id.json'), encoding='utf-8') as f:
     ent2id = json.load(f)
