@@ -24,8 +24,13 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
+# version = 1.0.0
 MID_DATA_DIR = "../processData/tagdata2ner_new/mid_data_new"
 RAW_DATA_DIR = "../processData/tagdata2ner_new/raw_data_new"
+# version = 2.0.0
+MID_DATA_DIR = "../processData/tagdata2ner_20230301/mid_data"
+RAW_DATA_DIR = "../processData/tagdata2ner_20230301/raw_data"
+
 # SUBMIT_DIR = "./result"
 GPU_IDS = "-1"  # linux 节约显存，故Linux该服务使用GPU
 LAMBDA = 0.3
