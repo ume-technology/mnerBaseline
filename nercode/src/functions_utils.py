@@ -46,8 +46,8 @@ def load_model_and_parallel(model, gpu_ids, ckpt_path=None, strict=True):
     """    加载模型 & 放置到 GPU 中（单卡 / 多卡）    """
     gpu_ids = gpu_ids.split(',')
     # set to device to the first cuda
-    device = torch.device("cpu" if gpu_ids[0] == '-1' else "cuda:" + gpu_ids[0])  # todo change windows  # 注意：Linux服务器也使用CPU服务器
     # device = torch.device('cuda:0')  # todo change linux
+    device = torch.device("cpu" if gpu_ids[0] == '-1' else "cuda:" + gpu_ids[0])  # todo change windows  # 注意：Linux服务器也使用CPU服务器
     # print("ensure device: ", device)
     if ckpt_path is not None:
         logger.info(f'Load ckpt from {ckpt_path}')
